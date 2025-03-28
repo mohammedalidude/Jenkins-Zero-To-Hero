@@ -9,14 +9,9 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        $class: 'GitSCM',
-  branches: [[name: '*/main']],
-  doGenerateSubmoduleConfigurations: false,
-  extensions: [[$class: 'CloneOption', noTags: true, depth: 1, timeout: 10]],
-  submoduleCfg: [],
-  userRemoteConfigs: [[
-    url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero',
-    credentialsId: '<CREDENTIALS_ID>'
+          $class: 'GitSCM',
+            branches: [[name: '*/main']],
+            userRemoteConfigs: url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero'
       }
     }
     stage('Build and Test') {
