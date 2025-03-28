@@ -15,7 +15,7 @@ pipeline {
   extensions: [[$class: 'CloneOption', noTags: true, depth: 1, timeout: 10]],
   submoduleCfg: [],
   userRemoteConfigs: [[
-    url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git',
+    url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero',
     credentialsId: '<CREDENTIALS_ID>'
       }
     }
