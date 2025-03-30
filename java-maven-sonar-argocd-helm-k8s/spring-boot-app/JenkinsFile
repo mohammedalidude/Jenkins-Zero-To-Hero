@@ -10,7 +10,6 @@ pipeline {
           branches: [[name: '*/main']], 
           extensions: [[$class: 'WipeWorkspace']], 
           userRemoteConfigs: [[url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero']]
-      }
     }
     stage('Build and Test') {
       steps {
