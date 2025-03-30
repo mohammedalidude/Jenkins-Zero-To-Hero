@@ -11,6 +11,13 @@ pipeline {
     GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
     GIT_USER_NAME = "mohammedalidude"
   }
+stage('Cleanup Workspace') {
+  steps {
+    script {
+      deleteDir() // 🔹 Deletes everything in the workspace
+    }
+  }
+}
   stages {
     stage('Checkout Code') {
       steps {
