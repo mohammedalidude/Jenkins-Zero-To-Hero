@@ -6,10 +6,11 @@ pipeline {
     }
   }
   stages {
-    stage('Checkout') {
-      steps {
-        sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero.git'
+    checkout([$class: 'GitSCM', 
+          branches: [[name: '*/main']], 
+          extensions: [[$class: 'WipeWorkspace']], 
+          userRemoteConfigs: [[url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero']]
+])
       }
     }
     stage('Build and Test') {
