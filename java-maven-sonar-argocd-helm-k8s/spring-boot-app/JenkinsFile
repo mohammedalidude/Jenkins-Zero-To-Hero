@@ -5,13 +5,11 @@ pipeline {
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
     }
   }
-
   environment {
     SONAR_URL = "http://13.233.227.70:9000"
     GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
     GIT_USER_NAME = "mohammedalidude"
   }
-
   stages {
     stage('Cleanup Workspace') {
       steps {
@@ -20,7 +18,6 @@ pipeline {
         }
       }
     }
-
     stage('Checkout Code') {
       steps {
         checkout([$class: 'GitSCM', 
@@ -30,7 +27,6 @@ pipeline {
         ])
       }
     }
-
     stage('Build and Test') {
       steps {
         sh '''
@@ -39,7 +35,6 @@ pipeline {
         '''
       }
     }
-
     stage('Static Code Analysis') {
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -50,7 +45,6 @@ pipeline {
         }
       }
     }
-
     stage('Build and Push Docker Image') {
       steps {
         script {
@@ -66,7 +60,6 @@ pipeline {
         }
       }
     }
-
     stage('Update Deployment File') {
       steps {
         withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
