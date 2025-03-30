@@ -18,16 +18,15 @@ pipeline {
     }
   }
 }
-  stages {
-    stage('Checkout Code') {
-      steps {
-        checkout([$class: 'GitSCM', 
-          branches: [[name: '*/main']], 
-          extensions: [[$class: 'WipeWorkspace']], 
-          userRemoteConfigs: [[url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero']]
-        ])
-      }
-    }
+stage('Checkout Code') {
+  steps {
+    checkout([$class: 'GitSCM', 
+      branches: [[name: '*/main']], 
+      extensions: [[$class: 'WipeWorkspace']], 
+      userRemoteConfigs: [[url: 'https://github.com/mohammedalidude/Jenkins-Zero-To-Hero']]
+    ])
+  }
+}
     stage('Setup Java 17') {  // 🔹 Ensure Java 17 is installed
       steps {
         sh '''
